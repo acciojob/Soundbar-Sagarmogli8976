@@ -3,7 +3,7 @@ const stopBtn = document.querySelector(".stop");
 
 let currentAudio = null;
 
-// Create dummy audio object
+// Dummy audio (no real file)
 function createAudio() {
     return {
         play: function () {},
@@ -14,13 +14,11 @@ function createAudio() {
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        // stop previous
         if (currentAudio) {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
 
-        // create dummy audio instead of real file
         currentAudio = createAudio();
         currentAudio.play();
     });
