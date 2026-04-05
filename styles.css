@@ -1,9 +1,12 @@
+/*  your css code here. If applicable */
 body {
-    background: linear-gradient(to right, #7b2cbf, #9d4edd);
+    margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(to right, #7b2cbf, #9d4edd);
+    font-family: Arial, sans-serif;
 }
 
 #buttons {
@@ -12,10 +15,11 @@ body {
 }
 
 button {
-    padding: 12px 20px;
+    padding: 12px 18px;
     border: none;
     border-radius: 6px;
     background-color: #5a189a;
     color: white;
     cursor: pointer;
+    font-size: 14px;
 }
