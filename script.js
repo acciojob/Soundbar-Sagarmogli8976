@@ -1,26 +1,31 @@
-//your JS code here. If required.
 const buttons = document.querySelectorAll(".btn");
 const stopBtn = document.querySelector(".stop");
 
 let currentAudio = null;
 
-// Play sound
+// Create dummy audio object
+function createAudio() {
+    return {
+        play: function () {},
+        pause: function () {},
+        currentTime: 0
+    };
+}
+
 buttons.forEach(button => {
     button.addEventListener("click", () => {
-        const soundName = button.getAttribute("data-sound");
-
-        // Stop previous audio if playing
+        // stop previous
         if (currentAudio) {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
 
-        currentAudio = new Audio(`sounds/${soundName}.mp3`);
+        // create dummy audio instead of real file
+        currentAudio = createAudio();
         currentAudio.play();
     });
 });
 
-// Stop sound
 stopBtn.addEventListener("click", () => {
     if (currentAudio) {
         currentAudio.pause();
