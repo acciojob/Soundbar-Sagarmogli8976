@@ -1,41 +1,38 @@
-//your JS code here. If required.
-const buttons = document.querySelectorAll(".btn");
-const stopBtn = document.querySelector(".stop");
-
+// Variable to store the currently playing audio so we can stop it
 let currentAudio = null;
 
+// Select all buttons with class 'btn'
+const buttons = document.querySelectorAll('.btn');
+
 buttons.forEach(button => {
-    button.addEventListener("click", () => {
+    button.addEventListener('click', () => {
+        const soundName = button.textContent.toLowerCase();
 
-        // stop previous audio
-        if (currentAudio) {
-            currentAudio.pause();
-            currentAudio.remove();
+        // Check if the clicked button is the 'stop' button
+        if (button.classList.contains('stop')) {
+            stopSound();
+        } else {
+            playSound(soundName);
         }
-
-        // create real audio element
-        const audio = document.createElement("audio");
-
-        // IMPORTANT: give a valid (but empty) source to avoid error
-        const source = document.createElement("source");
-        source.src = ""; // no real file needed
-        source.type = "audio/mpeg";
-
-        audio.appendChild(source);
-        audio.autoplay = true;
-
-        document.body.appendChild(audio);
-
-        currentAudio = audio;
-
-        // try to play (avoid crash)
-        audio.play().catch(() => {});
     });
 });
 
-stopBtn.addEventListener("click", () => {
+function playSound(name) {
+    // Stop any sound currently playing before starting a new one
+    stopSound();
+
+    // Create new audio object. Path: sounds/filename.mp3
+    currentAudio = new Audio(`sounds/${name}.mp3`);
+    
+    currentAudio.play().catch(error => {
+        console.error(`Error playing sound ${name}:`, error);
+        alert(`Sound file "sounds/${name}.mp3" not found!`);
+    });
+}
+
+function stopSound() {
     if (currentAudio) {
         currentAudio.pause();
-        currentAudio.remove();
+        currentAudio.currentTime = 0; // Reset sound to the beginning
     }
-});
+}

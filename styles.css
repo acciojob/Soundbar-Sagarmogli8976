@@ -1,25 +1,43 @@
-/*  your css code here. If applicable */
 body {
     margin: 0;
+    padding: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right, #7b2cbf, #9d4edd);
+    background-color: #a855f7; /* Light purple background */
     font-family: Arial, sans-serif;
 }
 
 #buttons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-button {
-    padding: 12px 18px;
-    border: none;
-    border-radius: 6px;
-    background-color: #5a189a;
+.btn {
+    background-color: #6b21a8; /* Dark purple */
     color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
+    transition: background-color 0.2s, transform 0.1s;
+    min-width: 100px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.btn:hover {
+    background-color: #581c87;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Special class for the stop button as requested */
+.stop {
+    background-color: #6b21a8; 
 }
