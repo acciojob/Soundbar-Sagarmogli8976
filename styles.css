@@ -17,7 +17,7 @@ body {
 }
 
 .btn {
-    background-color: #6b21a8; /* Dark purple */
+    background-color: #6b21a8; /* Dark purple buttons */
     color: white;
     border: none;
     padding: 15px 25px;
@@ -37,7 +37,7 @@ body {
     transform: scale(0.95);
 }
 
-/* Special class for the stop button as requested */
+/* Special styling for stop button if needed */
 .stop {
-    background-color: #6b21a8; 
+    background-color: #6b21a8;
 }

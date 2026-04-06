@@ -1,14 +1,14 @@
-// Variable to store the currently playing audio so we can stop it
-let currentAudio = null;
-
-// Select all buttons with class 'btn'
+// Select the audio element from the DOM
+const audioPlayer = document.getElementById('audio-player');
+// Select all buttons with the class 'btn'
 const buttons = document.querySelectorAll('.btn');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        const soundName = button.textContent.toLowerCase();
+        // Get the text inside the button (e.g., "applause")
+        const soundName = button.textContent.trim().toLowerCase();
 
-        // Check if the clicked button is the 'stop' button
+        // Check if the button has the 'stop' class
         if (button.classList.contains('stop')) {
             stopSound();
         } else {
@@ -18,21 +18,18 @@ buttons.forEach(button => {
 });
 
 function playSound(name) {
-    // Stop any sound currently playing before starting a new one
-    stopSound();
-
-    // Create new audio object. Path: sounds/filename.mp3
-    currentAudio = new Audio(`sounds/${name}.mp3`);
+    // Set the source to the sounds folder relative to the html file
+    // Path format: sounds/applause.mp3
+    audioPlayer.src = `sounds/${name}.mp3`;
     
-    currentAudio.play().catch(error => {
+    // Play the sound
+    audioPlayer.play().catch(error => {
         console.error(`Error playing sound ${name}:`, error);
-        alert(`Sound file "sounds/${name}.mp3" not found!`);
     });
 }
 
 function stopSound() {
-    if (currentAudio) {
-        currentAudio.pause();
-        currentAudio.currentTime = 0; // Reset sound to the beginning
-    }
+    // Pause the audio and reset the time to 0
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
 }
